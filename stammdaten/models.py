@@ -33,10 +33,42 @@ class Kunde(models.Model):
     kunde_created_at = models.DateTimeField(auto_now_add=True)
     kunde_updated_at = models.DateTimeField(auto_now=True)
 
+    def lager_name(self):
+        return '{} {}'.format(self.kunde_name, self.kunde_lager)
+    
+    # def __str__(self):
+    #     return self.kunde_lager
+
     def __str__(self):
-        return f"{self.kunde_name} {self.kunde_lager}"
+        return '{} {}'.format(self.kunde_name, self.kunde_lager)
     
     # Bezeichnungen für Adminbereich
     class Meta:
         verbose_name = _("Kunde")
         verbose_name_plural = _("Kunden")
+
+class Kategorie(models.Model):
+    kategorie_name = models.CharField(max_length=64, verbose_name='Name')    
+    kategorie_created_at = models.DateTimeField(auto_now_add=True)
+    kategorie_updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.kategorie_name
+    
+    # Bezeichnungen für Adminbereich
+    class Meta:
+        verbose_name = _("Kategorie")
+        verbose_name_plural = _("Kategorien")
+
+class Grund(models.Model):
+    grund_name = models.CharField(max_length=64, verbose_name='Name')    
+    grund_created_at = models.DateTimeField(auto_now_add=True)
+    grund_updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.grund_name
+    
+    # Bezeichnungen für Adminbereich
+    class Meta:
+        verbose_name = _("Grund")
+        verbose_name_plural = _("Gründe")
