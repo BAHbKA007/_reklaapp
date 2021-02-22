@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Firma, Kunde
+from .models import Firma, Kunde, Grund, Kategorie
 
 class FirmaAdmin(admin.ModelAdmin):
     list_display = ('firma_name', 'image_thumb',)
@@ -11,3 +11,5 @@ class KundeAdmin(admin.ModelAdmin):
 
 admin.site.register(Firma, FirmaAdmin)
 admin.site.register(Kunde, KundeAdmin)
+admin.site.register(Grund)
+admin.site.register(Kategorie)

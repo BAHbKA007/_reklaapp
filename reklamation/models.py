@@ -8,9 +8,9 @@ from stammdaten.models import Firma, Grund, Kategorie, Kunde
 class Reklamation(models.Model):
 
     reklamation_Datum = models.DateTimeField(verbose_name='Datum')
-    reklamation_Lager= models.ForeignKey(Kunde, on_delete=models.DO_NOTHING, verbose_name='Lager',)
-    reklamation_Firma= models.ForeignKey(Firma, on_delete=models.DO_NOTHING, verbose_name='Firma', blank=True, null=True)
-    reklamation_User= models.ForeignKey(User, on_delete=models.DO_NOTHING, verbose_name='Benutzer', blank=True, null=True)
+    reklamation_Lager = models.ForeignKey(Kunde, on_delete=models.DO_NOTHING, verbose_name='Lager', blank=True, null=True)
+    reklamation_Firma = models.ForeignKey(Firma, on_delete=models.DO_NOTHING, verbose_name='Firma', blank=True, null=True)
+    reklamation_User = models.ForeignKey(User, on_delete=models.DO_NOTHING, verbose_name='Benutzer', blank=True, null=True)
     reklamation_Produkt = models.CharField(max_length=64, verbose_name='Produkt')
     reklamation_Menge = models.PositiveSmallIntegerField(verbose_name='Menge')
     reklamation_Grund= models.ForeignKey(Grund, on_delete=models.CASCADE, verbose_name='Grund', blank=True, null=True)

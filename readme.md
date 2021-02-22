@@ -17,3 +17,6 @@
 │       └──Maßnahme Vertrieb
 │       └──Lieferschein
 │       └──Lieferant (UNIQUE)
+
+
+C:\Python\venv\Scripts\activate.bat
