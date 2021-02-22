@@ -6,7 +6,7 @@
   │   └──Reklamationsgrund; 
   ├── **Reklamation** (Spalten) (evtl. mit Workflow)
   │    └──rekla
-  │       └──Datum
+  │       └──Datum <br>
   │       └──Produkt (Produktdatenbank?)
   │       └──Artikelzusatz (Kisteninhalt)
   │       └──Menge (in Kolli)
