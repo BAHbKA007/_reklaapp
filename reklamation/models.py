@@ -7,7 +7,7 @@ from stammdaten.models import Firma, Kunde
 class Kategorie(models.Model):
     kategorie_name = models.CharField(
         max_length=64,
-        verbose_name='Kategorie')    
+        verbose_name='Kategorie')
     kategorie_created_at = models.DateTimeField(auto_now_add=True)
     kategorie_updated_at = models.DateTimeField(auto_now=True)
 
