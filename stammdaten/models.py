@@ -7,6 +7,11 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Firma(models.Model):
     firma_name = models.CharField(max_length=64, verbose_name='Firma')
+    firma_user = models.ManyToManyField(
+        User,
+        blank=True,
+        null=True,
+        verbose_name='User für die Firma berechtigen')
     firma_logo = models.ImageField(upload_to='', blank=True, null=True)
     firma_created_at = models.DateTimeField(auto_now_add=True)
     firma_updated_at = models.DateTimeField(auto_now=True)
@@ -38,17 +43,19 @@ class Kunde(models.Model):
     kunde_lager = models.CharField(
         max_length=64,
         verbose_name='Lager')
+    # kunde_user = models.ManyToManyField(
+    #     User,
+    #     blank=True,
+    #     null=True,
+    #     verbose_name='User für den Kunden berechtigen')
     kunde_created_at = models.DateTimeField(auto_now_add=True)
     kunde_updated_at = models.DateTimeField(auto_now=True)
 
     def lager_name(self):
-        return '{} {}'.format(self.kunde_name, self.kunde_lager)
-
-    # def __str__(self):
-    #     return self.kunde_lager
+        return f'{self.kunde_name} {self.kunde_lager}'
 
     def __str__(self):
-        return '{} {}'.format(self.kunde_name, self.kunde_lager)
+        return f'{self.kunde_name} {self.kunde_lager}'
 
     # Bezeichnungen für Adminbereich
     class Meta:
@@ -66,6 +73,34 @@ class Firmenzugehörigkeit(models.Model):
         on_delete=models.SET_NULL,
         null=True,
         verbose_name='Firma')
+
+    def __str__(self):
+        return ''
+
+
+class FirmenBerechtigungen(models.Model):
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        verbose_name="Benutzer")
+    firma = models.ManyToManyField(
+        Firma,
+        null=True,
+        verbose_name='Firma')
+
+    def __str__(self):
+        return 'Firmen Berechtigungen'
+
+
+class KundenBerechtigungen(models.Model):
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        verbose_name="Benutzer")
+    kunde = models.ManyToManyField(
+        Kunde,
+        null=True,
+        verbose_name='Kunde')
 
     def __str__(self):
         return ''
