@@ -43,6 +43,11 @@ class Kunde(models.Model):
     kunde_lager = models.CharField(
         max_length=64,
         verbose_name='Lager')
+    kunde_user = models.ManyToManyField(
+        User,
+        blank=True,
+        null=True,
+        verbose_name='User für die Firma berechtigen')
     # kunde_user = models.ManyToManyField(
     #     User,
     #     blank=True,

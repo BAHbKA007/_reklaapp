@@ -14,6 +14,7 @@ class FirmaAdmin(admin.ModelAdmin):
 class KundeAdmin(admin.ModelAdmin):
     list_display = ('kunde_name', 'kunde_lager')
     list_display_links = ('kunde_name', 'kunde_lager',)
+    filter_horizontal = ('kunde_user',)
 
 
 # Firmenfeld im User Admin Bereich erzeugen
